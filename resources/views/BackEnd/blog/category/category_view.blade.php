@@ -36,10 +36,10 @@
 									<td>{{ $item->blog_category_slug }}</td>
 									<td>
 										@if($item->status == 1)
-                    	<a href="{{ route('blog.category.in_active',['id'=>$item->id]) }}" class="btn btn-success btn-sm">Active</a>
-                    @else
-                    	<a href="{{ route('blog.category.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
-                    @endif
+					                    	<a href="{{ route('blog.category.in_active',['id'=>$item->id]) }}" class="btn btn-success btn-sm">Active</a>
+					                    @else
+					                    	<a href="{{ route('blog.category.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
+					                    @endif
 									</td>
 									<td width="30%">
 										<a href="{{ route('blog.category.edit',$item->id) }}" class="btn btn-info btn-rounded" ><i class="fa fa-edit"></i></a>

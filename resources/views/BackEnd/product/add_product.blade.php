@@ -1,5 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{{ asset('backEnd/jquery.min.js ') }}"></script>
 <div class="content-wrapper">
 	<div class="container-full">
@@ -147,7 +148,7 @@
 												<span class="text-danger">{{ $message }}</span>
 											@enderror()
 											<div class="controls">
-												<input type="text" name="product_color" class="form-control"  required="" value="red,yellow,bule" data-role="tagsinput"  placeholder="Enter the product color">
+												<input type="text" name="product_color" class="form-control"  required="" value="Red,Yellow,Bule,White,Black,Green,Sky" data-role="tagsinput"  placeholder="Enter the product color">
 											    @error('product_color') 
 												<span class="text-danger">{{ $message }}</span>
 												@enderror
@@ -206,29 +207,31 @@
 									</div>
 								</div>
 								<div class="row">
-									<div class="col-md-6">
+									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="editor1">Short Description<span class="text-danger">*</span></label>
+											<label for="short_description">Short Description<span class="text-danger">*</span></label>
 											@error('short_description')
 												<span class="text-danger">{{ $message }}</span>
 											@enderror()
 											<div class="controls">
-												<textarea id="editor1" name="short_description" rows="10" cols="40" placeholder="please some text here">
+												<textarea id="short_description" name="short_description" class="form-control" rows="10" cols="30" placeholder="please some text here">
 													
 												</textarea>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6">
+									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="editor2">Long Description<span class="text-danger">*</span></label>
+											<label for="l_descrip">Long Description<span class="text-danger">*</span></label>
 											@error('long_description')
 												<span class="text-danger">{{ $message }}</span>
 											@enderror()
 											<div class="controls">
-												<textarea name="long_description" id="editor2" class="form-control" required placeholder="please some text here"></textarea>
+												<textarea id="l_descrip" name="long_description" class="form-control" rows="10" cols="30" placeholder="please some text here">
+													
+												</textarea>
 											</div>
-										</div>	
+										</div>
 									</div>
 								</div>
 								<hr>
@@ -300,7 +303,7 @@
             var category_id = $(this).val();
             if(category_id) {
                 $.ajax({
-                    url: "{{  url('/all-category/all-subcategory/ajax') }}/"+category_id,
+                    url: "{{  url('/category/category-subcategory/ajax') }}/"+category_id,
                     type:"GET",
                     dataType:"json",
                     success:function(data) {
@@ -323,7 +326,7 @@
             var subcategory_id = $(this).val();
             if(subcategory_id) {
                 $.ajax({
-                    url: "{{  url('/all-subcategory/all-subsubcategory/ajax') }}/"+subcategory_id,
+                    url: "{{  url('/category/subcategory-subsubcategory/ajax') }}/"+subcategory_id,
                     type:"GET",
                     dataType:"json",
                     success:function(data) {
@@ -353,18 +356,6 @@
   	}
   </script>
 
-<!-- vaiyer ta product main ht -->
-<!-- <script type="text/javascript">
-	function mainThamUrl(input){
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e){
-				$('#mainThmb').attr('src',e.target.result).width(80).height(80);
-			};
-			reader.readAsDataURL(input.files[0]);
-		}
-	}	
-</script> -->
 <!-- show multimg javascript code -->
 <script>
  

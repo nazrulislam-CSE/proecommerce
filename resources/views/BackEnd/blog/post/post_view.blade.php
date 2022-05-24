@@ -104,18 +104,4 @@
   	}
   </script>
 
-<!-- vaiyer ta product main ht -->
-<!-- <script type="text/javascript">
-	function mainThamUrl(input){
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e){
-				$('#mainThmb').attr('src',e.target.result).width(80).height(80);
-			};
-			reader.readAsDataURL(input.files[0]);
-		}
-	}	
-</script> -->
-<!-- show multimg javascript code -->
-
 @endsection()

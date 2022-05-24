@@ -2,112 +2,84 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Routing\Pipeline;
-use App\Actions\Fortify\AttemptToAuthenticate;
-use Laravel\Fortify\Actions\EnsureLoginIsNotThrottled;
-use Laravel\Fortify\Actions\PrepareAuthenticatedSession;
-use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
-use App\Http\Responses\LoginResponse;
-use Laravel\Fortify\Contracts\LoginViewResponse;
-use Laravel\Fortify\Contracts\LogoutResponse;
-use Laravel\Fortify\Features;
-use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Http\Requests\LoginRequest;
-
+use Auth;
+use App\Models\Admin;
+use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
+use Session;
 class AdminController extends Controller
 {
-    /**
-     * The guard implementation.
-     *
-     * @var \Illuminate\Contracts\Auth\StatefulGuard
-     */
-    protected $guard;
+    /*=================== Start Index Login Methoed ===================*/
+    public function Index(){
 
-    /**
-     * Create a new controller instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\StatefulGuard  $guard
-     * @return void
-     */
-    public function __construct(StatefulGuard $guard)
-    {
-        $this->guard = $guard;
-    }
+    	return view('admin.admin_login');
+    } // end method
 
-    public function loginForm(){
-        return view('auth.admin_login',['guard' => 'admin']);
-    }
+    /*=================== End Index Login Methoed ===================*/
 
-    /**
-     * Show the login view.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Laravel\Fortify\Contracts\LoginViewResponse
-     */
-    public function create(Request $request): LoginViewResponse
-    {
-        return app(LoginViewResponse::class);
-    }
+    /*=================== Start Dashboard Methoed ===================*/
+    public function Dashboard(){
+    	
+    	return view('admin.index');
+    } // end method
 
-    /**
-     * Attempt to authenticate a new session.
-     *
-     * @param  \Laravel\Fortify\Http\Requests\LoginRequest  $request
-     * @return mixed
-     */
-    public function store(LoginRequest $request)
-    {
-        return $this->loginPipeline($request)->then(function ($request) {
-            return app(LoginResponse::class);
-        });
-    }
+    /*=================== End Dashboard Methoed ===================*/
 
-    /**
-     * Get the authentication pipeline instance.
-     *
-     * @param  \Laravel\Fortify\Http\Requests\LoginRequest  $request
-     * @return \Illuminate\Pipeline\Pipeline
-     */
-    protected function loginPipeline(LoginRequest $request)
-    {
-        if (Fortify::$authenticateThroughCallback) {
-            return (new Pipeline(app()))->send($request)->through(array_filter(
-                call_user_func(Fortify::$authenticateThroughCallback, $request)
-            ));
-        }
+    /*=================== Start Admin Login Methoed ===================*/
+    public function Login(Request $request){
 
-        if (is_array(config('fortify.pipelines.login'))) {
-            return (new Pipeline(app()))->send($request)->through(array_filter(
-                config('fortify.pipelines.login')
-            ));
-        }
+    	$this->validate($request,[
+    		'email' =>'required',
+    		'password' =>'required'
+    	]);
 
-        return (new Pipeline(app()))->send($request)->through(array_filter([
-            config('fortify.limiters.login') ? null : EnsureLoginIsNotThrottled::class,
-            Features::enabled(Features::twoFactorAuthentication()) ? RedirectIfTwoFactorAuthenticatable::class : null,
-            AttemptToAuthenticate::class,
-            PrepareAuthenticatedSession::class,
-        ]));
-    }
+    	// dd($request->all());
+    	$check = $request->all();
+    	if(Auth::guard('admin')->attempt(['email' => $check['email'], 'password'=> $check['password'] ])){
 
-    /**
-     * Destroy an authenticated session.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Laravel\Fortify\Contracts\LogoutResponse
-     */
-    public function destroy(Request $request): LogoutResponse
-    {
-        $this->guard->logout();
+    		return redirect()->route('admin.dashboard')->with('success','Admin Login Successfully.');
+    	}else{
+    		return back()->with('info','Invaild Email Or Password.');
+    	}
+    	
+    } // end method
 
-        $request->session()->invalidate();
+    /*=================== End Admin Login Methoed ===================*/
 
-        $request->session()->regenerateToken();
+    /*=================== Start Logout Methoed ===================*/
+    public function AminLogout(){
+    	
+    	Auth::guard('admin')->logout();
+    	return redirect()->route('login_form')->with('success','Admin Logout Successfully.');
+    } // end method
+    /*=================== End Logout Methoed ===================*/
 
-        return app(LogoutResponse::class);
-    }
+    /*=================== Start AdminRegister Methoed ===================*/
+    public function AdminRegister(){
+    	
+    	return view('admin.admin_register');
+    } // end method
+    /*=================== End AdminRegister Methoed ===================*/
+
+    /*=================== Start AdminRegisterStore Methoed ===================*/
+    public function AdminRegisterStore(Request $request){
+
+    	$this->validate($request,[
+    		'name' =>'required',
+    		'email' =>'required',
+    		'password' =>'required',
+    		'password_confirmation' =>'required'
+    	]);
+    	// dd($request->all());
+    	Admin::insert([
+    		'name' => $request->name,
+    		'email' => $request->email,
+    		'password' => Hash::make($request->password),
+    		'created_at' => Carbon::now(),
+    	]);
+
+    	return redirect()->route('login_form')->with('success','Admin Created Successfully.');
+    } // end method
+    /*=================== End AdminRegisterStore Methoed ===================*/
 }
-

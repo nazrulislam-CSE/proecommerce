@@ -37,22 +37,22 @@
 									<td><img src="{{ asset($item->post_image) }}" width="60" height="60" alt=""></td>
 									<td width="15%">
 										<?php $des =  strip_tags(html_entity_decode($item->post_title))?>
-                    {{ Str::limit($des, $limit = 20, $end = '. . .') }}
+                    					{{ Str::limit($des, $limit = 20, $end = '. . .') }}
 									</td>
 									<td width="15%">
 										<?php $des =  strip_tags(html_entity_decode($item->post_slug))?>
-                    {{ Str::limit($des, $limit = 20, $end = '. . .') }}
+                    					{{ Str::limit($des, $limit = 20, $end = '. . .') }}
 									</td>
 									<td width="15%">
 										<?php $des =  strip_tags(html_entity_decode($item->post_details))?>
-                    {{ Str::limit($des, $limit = 20, $end = '. . .') }}
+                    					{{ Str::limit($des, $limit = 20, $end = '. . .') }}
 									</td>
 									<td>
 										@if($item->status == 1)
-                    	<a href="{{ route('blog.post.in_active',['id'=>$item->id]) }}" class="btn btn-success btn-sm">Active</a>
-                    @else
-                    	<a href="{{ route('blog.post.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
-                    @endif
+					                    	<a href="{{ route('blog.post.in_active',['id'=>$item->id]) }}" class="btn btn-success btn-sm">Active</a>
+					                    @else
+					                    	<a href="{{ route('blog.post.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
+					                    @endif
 									</td>
 									<td width="30%">
 										<a href="{{ route('blog.post.edit',$item->id) }}" class="btn btn-info btn-rounded" ><i class="fa fa-edit"></i></a>

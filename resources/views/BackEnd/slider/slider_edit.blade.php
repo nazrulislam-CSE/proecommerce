@@ -10,8 +10,12 @@
 				  <h4 class="box-title">Edit Slider</h4>
 				</div>
 				<div class="box-body">
-					<form action="{{ route('slider.update',$slider->id)}}" method="post" class="form-horizontal form-element col-12" enctype="multipart/form-data">
+					<form action="{{ route('slider.update')}}" method="post" class="form-horizontal form-element col-12" enctype="multipart/form-data">
 						{{ csrf_field() }}
+
+						<input type="hidden" name="id" value="{{ $slider->id }}">	
+	 					<input type="hidden" name="old_image" value="{{ $slider->slider_img }}">	
+
 						<div class="form-group">
 							<label for="title">Slider Title: <span class="text-danger">**</span></label><br>
 							@error('title')
@@ -44,7 +48,7 @@
 			            </div>
 						<div class="form-group row">
 							<div class="col-sm-10">
-								<input type="submit" value="Add New" class="btn btn-rounded btn-primary">
+								<input type="submit" value="Update" class="btn btn-rounded btn-primary">
 							</div>
 						</div>
 					</form>

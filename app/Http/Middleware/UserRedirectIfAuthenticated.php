@@ -6,9 +6,9 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Cache;
 
 
 class UserRedirectIfAuthenticated
@@ -23,13 +23,14 @@ class UserRedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
-        // =========== start user active/inactive code ============= //
+
+
         if (Auth::check()) {
            $expireTime = Carbon::now()->addSeconds(30);
            Cache::put('user-is-online' . Auth::user()->id, true, $expireTime);
            User::where('id',Auth::user()->id)->update(['last_seen' => Carbon::now()]);
         }
-        // =========== end user active/inactive code ============= //
+
         
         if (Auth::check() && Auth::user()) {
            return $next($request);

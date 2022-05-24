@@ -36,14 +36,14 @@
 									<td>{{ $item->brand_name }}</td>
 									<td>
 										@if($item->status == 1)
-                    	<a href="{{ route('brand.in_active',['id'=>$item->id]) }}" class="btn btn-success btn-sm">Active</a>
-                    @else
-                    	<a href="{{ route('brand.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
-                    @endif
+					                    	<a href="{{ route('brand.in_active',['id'=>$item->id]) }}" class="btn btn-success btn-sm">Active</a>
+					                    @else
+					                    	<a href="{{ route('brand.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
+					                    @endif
 									</td>
 									<td>
 										<a href="{{ route('brand.edit',$item->id) }}" class="btn btn-info btn-rounded" ><i class="fa fa-edit"></i></a>
-										<a href="{{ route('brand.trash',['id'=>$item->id]) }}" id="trash" class="btn btn-danger btn-rounded"><i class="fa fa-trash"></i></a>
+										<a href="{{ route('brand.delete',['id'=>$item->id]) }}" id="delete" class="btn btn-danger btn-rounded"><i class="fa fa-trash"></i></a>
 									</td>
 								</tr>
 								@endforeach()

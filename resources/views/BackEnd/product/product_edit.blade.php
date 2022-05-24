@@ -182,59 +182,33 @@
 										</div>
 									</div>
 								</div>
-								<!-- <div class="row">
-									<div class="col-lg-6 col-md-6">
-										<div class="form-group">
-											<label for="main_thambnail">Main Thambnail <span class="text-danger">*</span></label>
-											@error('product_thambnail')
-												<span class="text-danger">{{ $message }}</span>
-											@enderror()
-											<div class="controls">
-												<input type="file" name="product_thambnail" id="main_thambnail" class="form-control mb-2" onChange = "mainThamurl(this)"> </div>
-												<img src="{{ asset($products->product_thambnail) }}" id="mainThmb" alt="" width="50" height="50">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6">
-										<div class="form-group">
-											<label for="multiImg">Multiple Image <span class="text-danger">*</span></label>
-											@error('multi_img')
-												<span class="text-danger">{{ $message }}</span>
-											@enderror()
-											<div class="controls">
-												<input type="file" name="multi_img[]" id="multiImg" class="form-control" multiple="" id="multiImg"> 
-												<div class="row pt-2" id="preview_img">
-													
-												</div>
-											</div>
-										</div>
-									</div>
-								</div> -->
+
 								<div class="row">
-									<div class="col-md-6">
+									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="editor1">Short Description<span class="text-danger">*</span></label>
+											<label for="short_description">Short Description<span class="text-danger">*</span></label>
 											@error('short_description')
 												<span class="text-danger">{{ $message }}</span>
 											@enderror()
 											<div class="controls">
-												<textarea id="editor1" name="short_description" rows="10" cols="40" placeholder="please some text here">
+												<textarea id="short_description" name="short_description" class="form-control" rows="10" cols="30" placeholder="please some text here">
 													{{ $products->short_description }}
 												</textarea>
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6">
+									<div class="col-lg-12">
 										<div class="form-group">
-											<label for="editor2">Long Description<span class="text-danger">*</span></label>
+											<label for="l_descrip">Long Description<span class="text-danger">*</span></label>
 											@error('long_description')
 												<span class="text-danger">{{ $message }}</span>
 											@enderror()
 											<div class="controls">
-												<textarea name="long_description" id="editor2" class="form-control" required placeholder="please some text here">
+												<textarea id="l_descrip" name="long_description" class="form-control" rows="10" cols="30" placeholder="please some text here">
 													{{ $products->long_description }}
 												</textarea>
 											</div>
-										</div>	
+										</div>
 									</div>
 								</div>
 								<hr>
@@ -298,7 +272,7 @@
 		</section>
 
 		<!-- /.content -->
-		<!-- ////////////////////////// Start Multiple Image Update Area /////////////////////// -->
+		<!-- ======================= Start Multiple Image Update Area ===================-->
 		<section class="content">
 			<div class="row">
 				<div class="col-md-12">
@@ -345,9 +319,9 @@
 			  	</div>
 			</div> <!-- //end row -->
 		</section>
-		<!-- ////////////////////////// End Multiple Image Update Area /////////////////////// -->
+		<!-- ======================= End Multiple Image Update Area ======================= -->
 
-		<!-- ////////////////////////// Start Multiple Thumbnail Update Area /////////////////////// -->
+		<!-- ======================= Start Multiple Thumbnail Update Area ===================-->
 		<div class="content-wrapper">
 			<section class="content">
 				<div class="row">
@@ -396,7 +370,7 @@
 				  </div> <!-- //end row -->
 			</section>
 		</div>
-		<!-- ////////////////////////// End Multiple Thumbnail Update Area /////////////////////// -->
+		<!-- ======================= End Multiple Thumbnail Update Area ======================= -->
 	</div>
 </div>
 <!-- sub category -->
@@ -459,18 +433,6 @@
   	}
   </script>
 
-<!-- vaiyer ta product main ht -->
-<!-- <script type="text/javascript">
-	function mainThamUrl(input){
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function(e){
-				$('#mainThmb').attr('src',e.target.result).width(80).height(80);
-			};
-			reader.readAsDataURL(input.files[0]);
-		}
-	}	
-</script> -->
 <!-- show multimg javascript code -->
 <script>
  

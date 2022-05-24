@@ -4674,6 +4674,8 @@ age-container #owl-main .owl-next {
 
 .copyright-bar .payment-methods {text-align:left; margin-top:10px}
 .single-product  .home-banner {display:none}
+/* my responsive */
+
 }
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) and (max-width: 991px) {

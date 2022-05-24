@@ -8,15 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class BlogPost extends Model
 {
     use HasFactory;
-
     protected $guarded = [];
 
-    public function BlogPostCategory(){
-        return $this->belongsTo('App\Models\BlogPostCategory');
+    public function BlogCategory(){
+        return $this->belongsTo('App\Models\BlogCategory');
     }
 
     public function user(){
         return $this->belongsTo('App\Models\User');
     }
-
 }

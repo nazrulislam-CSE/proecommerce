@@ -12,6 +12,10 @@
 				<div class="box-body">
 					<form action="{{ route('brand.update',['id'=>$brand->id]) }}" method="post" class="form-horizontal form-element col-12" enctype="multipart/form-data">
 							{{ csrf_field() }}
+							
+							<input type="hidden" name="id" value="{{ $brand->id }}">	
+							<input type="hidden" name="old_image" value="{{ $brand->brand_image }}">			   
+
 							<div class="form-group">
 								<label for="password">Brand Name: <span class="text-danger">**</span></label>
 								@error('brand_name')

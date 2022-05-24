@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
-<script src="{{ asset('backEnd/jquery.min.js ') }}"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
 	  <div class="container-full">
@@ -126,7 +126,7 @@
             var division_id = $(this).val();
             if(division_id) {
                 $.ajax({
-                    url: "{{  url('/division-view/district-view/ajax') }}/"+division_id,
+                    url: "{{  url('/shipping/division view - district show/ajax') }}/"+division_id,
                     type:"GET",
                     dataType:"json",
                     success:function(data) {

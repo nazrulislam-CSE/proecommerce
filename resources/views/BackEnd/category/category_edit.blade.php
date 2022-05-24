@@ -13,18 +13,18 @@
 					<form action="{{ route('category.update',['id'=>$category->id]) }}" method="post" class="form-horizontal form-element col-12">
 						{{ csrf_field() }}
 						<div class="form-group">
-							<label for="name">Category Name: <span class="text-danger">**</span></label>
-							@error('category_name')
+							<label for="category_name">Category Name Bangla: <span class="text-danger">**</span></label><br>
+							@error('category_name_ban')
 								<span class="text-danger">{{ $message }}</span>
 							@enderror()
-							<input type="text" name="category_name" class="form-control" id="name" placeholder="Enter the category name" value="{{ $category->category_name}}">
+							<input type="text" name="category_name" value="{{ $category->category_name}}" class="form-control" id="category_name" placeholder="Enter the category name">
 						</div>
 						<div class="form-group">
-							<label for="icon">Category Icon: <span class="text-danger">**</span></label>
+							<label for="icon">Category Icon: <span class="text-danger">**</span></label><br>
 							@error('category_icon')
 								<span class="text-danger">{{ $message }}</span>
 							@enderror()
-							<input type="text" name="category_icon" class="form-control" id="icon" placeholder="Enter the category icon" value="{{ $category->category_icon}}">
+							<input type="text" name="category_icon" value="{{ $category->category_icon }}" class="form-control" id="icon" placeholder="Enter the category icon">
 						</div>
 						<div class="form-group row">
 							<div class="col-sm-10">

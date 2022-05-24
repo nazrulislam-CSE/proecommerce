@@ -7,13 +7,13 @@
       <div class="col-md-10 m-auto">
         <div class="box">
         <div class="box-header with-border">
-          <h4 class="box-title">Edit Sub->SubCategory</h4>
+          <h4 class="box-title">Edit ChieldCategory</h4>
         </div>
         <div class="box-body">
           <form action="{{ route('subsubcategory.update',['id'=>$subsubcategories->id]) }}" method="post" class="form-horizontal form-element col-12">
             {{ csrf_field() }}
             <div class="form-group">
-              <label for="name">SubSubCategory Name: <span class="text-danger">**</span></label>
+              <label for="name">ChieldCategory Name: <span class="text-danger">**</span></label>
               @error('subsubcategory_name')
                 <span class="text-danger">{{ $message }}</span>
               @enderror()

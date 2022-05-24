@@ -49,7 +49,7 @@
 								  </td>
 
 								<td width="25%">
-						  <a href="{{ route('delete.review',$item->id)}}" id="delete" class="btn btn-danger">Delete </a>
+						  			<a href="{{ route('delete.review',$item->id)}}" id="delete" class="btn btn-danger">Delete </a>
 								</td>
 													 
 							 </tr>

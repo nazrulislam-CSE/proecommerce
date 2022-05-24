@@ -10,7 +10,11 @@
 				  <h4 class="box-title">Blog Post Edit</h4>
 				</div>
 				<div class="box-body">
-				<form action="{{ route('blog.post.update',$blogpost->id) }}" method="post" enctype="multipart/form-data">
+				<form action="{{ route('blog.post.update') }}" method="post" enctype="multipart/form-data">
+
+						<input type="hidden" name="id" value="{{ $blogpost->id }}">	
+	 					<input type="hidden" name="old_image" value="{{ $blogpost->post_image }}">
+
 						{{ csrf_field() }}
 					  	<div class="row">
 							<div class="col-12">

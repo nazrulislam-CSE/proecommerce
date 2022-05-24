@@ -41,17 +41,17 @@
 									</td>
 									<td>
 										@if($item->coupon_validity  >= Carbon\Carbon::now()->format('Y-m-d'))
-                    	<a href="#" class="badge badge-pill badge-success">Valid</a>
-                    @else
-                    	<a href="#" class="badge badge-pill badge-danger">Invalid</a>
-                    @endif
+					                    	<a href="#" class="badge badge-pill badge-success">Valid</a>
+					                    @else
+					                    	<a href="#" class="badge badge-pill badge-danger">Invalid</a>
+					                    @endif
 									</td>
 									<td>
 										@if($item->status == 1)
-                    	<a href="{{ route('coupon.in_active',['id'=>$item->id]) }}" class="btn btn-info btn-sm">Active</a>
-                    @else
-                    	<a href="{{ route('coupon.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
-                    @endif
+					                    	<a href="{{ route('coupon.in_active',['id'=>$item->id]) }}" class="btn btn-info btn-sm">Active</a>
+					                    @else
+					                    	<a href="{{ route('coupon.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
+					                    @endif
 									</td>
 									<td width="100%">
 										<a href="{{ route('coupon.edit',$item->id) }}" class="btn btn-info btn-rounded" ><i class="fa fa-edit"></i></a>
@@ -93,7 +93,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="coupon_validity">Coupon Validity Date: <span class="text-danger">**</span></label><br>
+								<label for="validity_name">Coupon Validity Date: <span class="text-danger">**</span></label><br>
 								@error('coupon_validity')
 									<span class="text-danger">{{ $message }}</span>
 								@enderror()

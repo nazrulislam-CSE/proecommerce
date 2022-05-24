@@ -41,10 +41,10 @@
 
 									<td>
 										@if($user->UserOnline())
-											<span class="badge badge-pill badge-success">Active Now</span>
+								         <span class="badge badge-pill badge-success">Active Now</span>
 										@else
-											<span class="badge badge-pill badge-danger">{{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</span>
-										@endif
+								            <span class="badge badge-pill badge-danger">{{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</span>
+										@endif 
 									</td>
 									<td>
 										<a href="#" class="btn btn-info" ><i class="fa fa-edit"></i></a>

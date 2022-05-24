@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Coupon extends Model
 {
-   
-    protected $dates = ['deleted_at'];
     use HasFactory;
-
     protected $guarded = [];
 }

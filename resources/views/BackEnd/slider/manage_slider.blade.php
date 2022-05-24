@@ -44,14 +44,14 @@
 									<td>{{ $item->description }}</td>
 									<td>
 										@if($item->status == 1)
-                    	<a href="{{ route('slider.in_active',['id'=>$item->id]) }}" class="btn btn-success btn-sm">Active</a>
-                    @else
-                    	<a href="{{ route('slider.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
-                    @endif
+					                    	<a href="{{ route('slider.in_active',['id'=>$item->id]) }}" class="btn btn-success btn-sm">Active</a>
+					                    @else
+					                    	<a href="{{ route('slider.active',['id'=>$item->id]) }}" class="btn btn-danger btn-sm">Inactive</a>
+					                    @endif
 									</td>
 									<td>
 										<a href="{{ route('slider.edit',$item->id) }}" class="btn btn-info btn-rounded" ><i class="fa fa-edit"></i></a>
-										<a href="{{ route('slider.trash',$item->id) }}" id="trash" class="btn btn-danger btn-rounded mt-2"><i class="fa fa-trash"></i></a>
+										<a href="{{ route('slider.delete',$item->id) }}" id="delete" class="btn btn-danger btn-rounded mt-2"><i class="fa fa-trash"></i></a>
 									</td>
 								</tr>
 								@endforeach()
